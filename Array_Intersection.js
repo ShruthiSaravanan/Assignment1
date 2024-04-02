@@ -1,30 +1,34 @@
-const prompt = require('prompt-sync')({sigint: true});
+/*
 
-let num1 = [];
-let length1 = prompt("Enter length");
+Changes made (
+    variable type changed to const,
+    Functions included,
+    Used Objects instead of dictionary or sets which is not an inbuilt one in javascript.
+)
 
-for (let i = 0; i < length1; i++) {
-    let value1 = prompt("Enter value for index " + i + ":");
-    num1.push(value1);
-}
-let num2 = [];
-let length2 = prompt("Enter length");
+*/ 
 
-for (let j = 0; j < length2; j++) {
-    let value2 = prompt("Enter value for index " + j + ":");
-    num2.push(value2);
-}
+function commonElements() {
+    const num1 = [1, 2, 3, 4, 5];
+    const num2 = [3, 4, 5];
 
-let res=[];
-for( k=0;k<num1.length;k++)
-{
-    for(j=0;j<num2.length;j++)
-    {
-        if(num1[k]==num2[j])
-        {
-        res.push(num1[k]);
-           
-}
+    const num1Dict = {};
+    const res = [];
+
+ 
+    for (let i = 0; i < num1.length; i++) {
+        num1Dict[num1[i]] = true;
     }
+
+
+    for (let j = 0; j < num2.length; j++) {
+        if (num1Dict[num2[j]]) {
+            res.push(num2[j]);
+        }
+    }
+
+    console.log("Common elements:", res);
 }
- console.log(res);
+
+
+commonElements();
