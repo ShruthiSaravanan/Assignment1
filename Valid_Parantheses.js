@@ -1,45 +1,29 @@
-function validParenthesis(s) {
-    let countParenthesis = 0;
-    let countBraces = 0;
-    let countBrackets = 0;
+// Changes : Modified code with Stack Concept
 
-for (let i = 0; i < s.length; i++) {
-    const char = s[i];
-    switch (char) {
-        case '(':
-          countParenthesis++;
-          break;
-          
-        case ')':
-         countParenthesis--;
-         break;
-         
-        case '{':
-         countBraces++;
-         break;
-         
-        case '}':
-         countBraces--;
-         break;
-         
-        case '[':
-          countBrackets++;
-          break;
-          
-         case ']':
-          countBrackets--;
-          break;
-        }
-   }
-    if( countParenthesis === 0 && countBraces === 0 && countBrackets === 0)
-        {
-        return true;
-         }
-    else{
-        return false;
-        }
+function isValid(str) {
+  const stack = [];
+    const map = {
+        '(': ')',
+        '[': ']',
+        '{': '}'
+    };
+
+    for (let i = 0; i < str.length; i++) {
+      const char = str[i];
+      if (char === '(' || char === '[' || char === '{') {
+        stack.push(char);
+      }
+      else {
+          const top = stack.pop();
+          if (char !== map[top]) {
+              return false;
+          }
+      }
+  }
+  return stack.length === 0;
 }
- 
 
-const s = "(){";
-console.log(validParenthesis(s));
+
+
+const str = "(((";
+console.log(isValid(str));
