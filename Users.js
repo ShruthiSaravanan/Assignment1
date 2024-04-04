@@ -19,9 +19,9 @@ fetch('https://dummyjson.com/users')
           });
     }
       
-    filteredData.sort((a, b) => a.firstName.localeCompare(b.firstName)); // Sort the array directly
+    filteredData.sort((a, b) => a.firstName.localeCompare(b.firstName));
     console.log(filteredData);
-    
+
   });
 
 
